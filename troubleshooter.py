@@ -19,7 +19,7 @@ def parcetry():
     # Open output file in 'append' mode
     #with open(output_filename, "a") as out_file:
         # Open input file in 'read' mode
-    with open("syslog.log", "r") as in_file:
+    with open("/log/syslog.log", "r") as in_file:
         # Loop over each log line
         loopstart = datetime.datetime.now()
         vlinetotal = 0
