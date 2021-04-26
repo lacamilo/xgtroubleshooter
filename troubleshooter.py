@@ -61,7 +61,7 @@ def menu ():
 
 def read_options(): 
     while True:
-        os.system('clear') # atempt to clear the screen keeping the menu always on top
+        #os.system('clear') # atempt to clear the screen keeping the menu always on top
         option = input()
         if option == '1':
             print ('option 1 selected')
