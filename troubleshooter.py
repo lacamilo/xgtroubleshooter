@@ -46,7 +46,7 @@ def menu ():
     print ('   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
     print ('                             XG Troubleshooter')
     print ('                            author:Luiz Camilo')
-    print ('   https://github.com/lacamilo/xgtroubleshooter/blob/main/troubleshooter.py')
+    print ('   https://raw.githubusercontent.com/lacamilo/xgtroubleshooter/main/troubleshooter.py')
     print ('   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
     print ('1. Show System info                           | 10. Show disk I/O')
     print ('2. Last reboot from syslog.log                | 11. List listening Sockets')
@@ -62,7 +62,7 @@ def menu ():
 def read_options(): 
     while True:
         os.system('clear') # atempt to clear the screen keeping the menu always on top
-        option = input()
+        option = input():
         if option == '1':
             print ('option 1 selected')
             parcetry()
@@ -97,7 +97,7 @@ def read_options():
             break
     
 def main (): 
-    menu ()
-    read_options()
+    menu ():
+    read_options():
 
-if __name__ == '__main__': main()
+main():
