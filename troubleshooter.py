@@ -46,6 +46,7 @@ def menu ():
     print ('   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
     print ('                             XG Troubleshooter')
     print ('                            author:Luiz Camilo')
+    print ('   https://github.com/lacamilo/xgtroubleshooter/blob/main/troubleshooter.py')
     print ('   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
     print ('1. Show System info                           | 10. Show disk I/O')
     print ('2. Last reboot from syslog.log                | 11. List listening Sockets')
