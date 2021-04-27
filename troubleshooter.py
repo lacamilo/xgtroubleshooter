@@ -30,7 +30,7 @@ def showsysteminfo():
     with open("/etc/displayversion", "r") as version_file:
         for line in version_file:
             s = line.rstrip("\n")
-            l = s.split('')
+            l = s.split(' ')
             print ('SFOS {} {}'.format(l[1], l[2]))
             print ('\n')
     pass
