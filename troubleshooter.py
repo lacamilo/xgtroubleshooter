@@ -35,7 +35,6 @@ def showsysteminfo():
             print ('\n')
     pass
 
-
 def menu ():
     print ('   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
     print ('                             XG Troubleshooter')
