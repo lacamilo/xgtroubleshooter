@@ -17,7 +17,8 @@ def lastreboot():
             # If log line matches our regex, print to console, and output file
             vlinetotal = vlinetotal + 1
             if (line_regex.search(line)):
-                print (line.rstrip("\n"))
+                #print (line.rstrip("\n"))
+                print (line)
         loopend = datetime.datetime.now()
         print ('Took {} seconds to run'.format(loopend - loopstart))
         print ("total number of lines read : {}".format(vlinetotal))
