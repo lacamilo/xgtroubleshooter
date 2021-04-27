@@ -62,9 +62,14 @@ def read_options():
         #os.system('clear') # attempt to clear the screen keeping the menu always on top
         option = input()
         if option == '1':
-            print ('option 1 selected')
+            #print ('option 1 selected')
+            showsysteminfo()
+            print ('Done, press Enter to continue')
+            key = input()
+            menu()
+            exit
         elif option == '2':
-            print ('option 2 selected')
+            #print ('option 2 selected')
             lastreboot()
             print ('Done, press Enter to continue')
             key = input()
