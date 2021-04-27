@@ -8,7 +8,7 @@ import datetime
 def lastreboot():
     #This function would open and query the /log/syslog.log file for reboot evidences.    
     #Regex to find the word "Busybox" 
-    line_regex = re.compile(r"\bBusyBox\b")
+    line_regex = re.compile(r"\b(syslogd started: BusyBox)\b")
     with open("/log/syslog.log", "r") as in_file:
         # Loop over each log line
         loopstart = datetime.datetime.now()
