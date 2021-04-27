@@ -27,11 +27,11 @@ def lastreboot():
 
 def showsysteminfo():
     #This function would populate many system informations
-    with open("/etc/cccversion", "r") as version_file:
+    with open("/etc/displayversion", "r") as version_file:
         for line in version_file:
             s = line.rstrip("\n")
-            l = s.split('_')
-            print ('Version : {} {}'.format(l[1], l[2]))
+            l = s.split('')
+            print ('SFOS {} {}'.format(l[1], l[2]))
             print ('\n')
     pass
 
