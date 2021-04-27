@@ -17,15 +17,14 @@ def lastreboot():
             # If log line matches our regex, print to console, and output file
             vlinetotal = vlinetotal + 1
             if (line_regex.search(line)):
-                #print (line.rstrip("\n"))
-                print (line)
+                print (line.rstrip("\n"))
         loopend = datetime.datetime.now()
         print ('Took {} seconds to run'.format(loopend - loopstart))
         print ("total number of lines read : {}".format(vlinetotal))
     pass
 
 def showsysteminfo():
-    #
+    #This function would populate many system informations
     with open("/etc/cccversion", "r") as version_file:
         for line in version_file:
             s = line.rstrip("\n")
