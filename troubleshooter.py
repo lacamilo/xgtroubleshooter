@@ -29,15 +29,7 @@ def showsysteminfo():
         for line in version_file:
             s = line.rstrip("\n")
             print ("Version : {}".format(s))
-
-
-
-def cligrep():
-    somecommand = subprocess.Popen('grep',
-                                   
-        
-    )
-    
+    pass
 
 
 def menu ():
