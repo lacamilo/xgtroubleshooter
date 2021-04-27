@@ -30,8 +30,8 @@ def showsysteminfo():
     with open("/etc/cccversion", "r") as version_file:
         for line in version_file:
             s = line.rstrip("\n")
-            l = s.split()
-            print ('Version : {}'.format(l))
+            l = s.split('_')
+            print ('Version : {}'.format(l[2]))
             print ('\n')
     pass
 
@@ -60,14 +60,14 @@ def read_options():
         if option == '1':
             #print ('option 1 selected')
             showsysteminfo()
-            print ('Done, press Enter to continue')
+            print ('Done, press Enter to continue', flush=True)
             key = input()
             menu()
             exit
         elif option == '2':
             #print ('option 2 selected')
             lastreboot()
-            print ('Done, press Enter to continue')
+            print ('Done, press Enter to continue', flush=True)
             key = input()
             menu()
             exit
