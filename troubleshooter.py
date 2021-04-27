@@ -31,7 +31,7 @@ def showsysteminfo():
         for line in version_file:
             s = line.rstrip("\n")
             l = s.split()
-            print ('Version : {}'.format(l[1]))
+            print ('Version : {}'.format(l))
             print ('\n')
     pass
 
