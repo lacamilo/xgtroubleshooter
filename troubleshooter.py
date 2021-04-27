@@ -5,20 +5,10 @@ import subprocess
 import re
 import datetime
 
-def parcetry():
-    # Regex to find the word "Busybox" 
+def lastreboot():
+    #This function would open and query the /log/syslog.log file for reboot evidences.    
+    #Regex to find the word "Busybox" 
     line_regex = re.compile(r"\bBusyBox\b")
-
-    # Output file, where the matched loglines will be copied to
-    output_filename = os.path.normpath("parsed_lines.log")
-
-    # Overwrites the file, ensure we're starting out with a blank file
-    #with open(output_filename, "w") as out_file:
-    #    out_file.write(output_filename)
-
-    # Open output file in 'append' mode
-    #with open(output_filename, "a") as out_file:
-        # Open input file in 'read' mode
     with open("/log/syslog.log", "r") as in_file:
         # Loop over each log line
         loopstart = datetime.datetime.now()
@@ -28,11 +18,19 @@ def parcetry():
             vlinetotal = vlinetotal + 1
             if (line_regex.search(line)):
                 print (line.rstrip("\n"))
-                #out_file.write(line)
         loopend = datetime.datetime.now()
         print ('Took {} seconds to run'.format(loopend - loopstart))
         print ("total number of lines read : {}".format(vlinetotal))
     pass
+
+def showsysteminfo():
+    #
+    with open("/etc/cccversion", "r") as version_file:
+        for line in version_file:
+            s = line.rstrip("\n")
+            print ("Version : {}".format(s))
+
+
 
 def cligrep():
     somecommand = subprocess.Popen('grep',
@@ -61,17 +59,17 @@ def menu ():
 
 def read_options(): 
     while True:
-        #os.system('clear') # atempt to clear the screen keeping the menu always on top
+        #os.system('clear') # attempt to clear the screen keeping the menu always on top
         option = input()
         if option == '1':
             print ('option 1 selected')
-            parcetry()
+        elif option == '2':
+            print ('option 2 selected')
+            lastreboot()
             print ('Done, press Enter to continue')
             key = input()
             menu()
             exit
-        elif option == '2':
-            print ('option 2 selected')
         elif option == '3':
             print ('option 3 selected')
         elif option == '4':
