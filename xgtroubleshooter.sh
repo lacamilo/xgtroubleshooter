@@ -1,5 +1,5 @@
 #!/bin/sh
-#Author - Luiz Camilo - 
+#Author - Luiz Camilo - luiz.camilo@sophos.com
 
 ## ----------------------------------
 # Define global variables
@@ -15,65 +15,49 @@ pause(){
   read -p "Press [Enter] key to continue..." fackEnterKey
 }
 
-# ----------------------------------
-# Option one pressed
-# ----------------------------------
 one(){
-        #echo "one() called"
-    #    pause
-        PSQL="/bin/psql -U nobody -d signature -p 5434"
-        crversion=`awk ' BEGIN { FS="_" } { print $3; } ' /etc/displayversion`
-        crmodel=`awk ' BEGIN { FS="_" } { print $1} ' /etc/displayversion`
-        fw_version=`cat /etc/version | cut -d"_" -f3`
-        fwbuild=`echo $fw_version | cut -d"." -f4`
-        appkey=`/bin/opcode getappkey -s nosync 2>/dev/null`
-        if [ "$appkey" = "failed" ] ; then
+        echo
+		appkey=`/bin/opcode getappkey -s nosync 2>/dev/null`
+		if [ "$appkey" = "failed" ] ; then
                 appkey="N.A"
         fi
+        echo "Serial Number:		$appkey"
         pubkey=`/bin/opcode getpublickey -s nosync 2>/dev/null`
         if [ $pubkey = "failed" ] ; then
                 pubkey="N.A"
         fi
-        awhttpversion=`awarrenhttp -v | awk ' BEGIN { FS=" " } { print $2} '`
-        awsmtpversion=`awarrensmtp -v | awk ' BEGIN { FS=" " } { print $2} '`
-        warrenversion=`warren -v | awk ' BEGIN { FS=" " } { print $2} '`
-        garnerversion=`garner -v | awk ' BEGIN { FS=" " } { print $2} '`
-        crloaderversion=`loadfw -v | grep SFLOADER | awk ' BEGIN { FS=" " } { print $3} '`
-        wcversion=`WINGc -V`
-        ipsversion=`$PSQL -Atc "select value from tblinfo where key='ips_sig_ver';"`
-        avsigversion=`$PSQL -Atc "select value from tblinfo where key='av_definition_version';"`
-        confdb=`cat /conf/db/version`
-        sigdb=`cat /sig/newdb/version`
-                        reportdb=`cat /var/newdb/version`
-        hwversion=`awk -F "_" '{print $2}' /etc/displayversion`
-        vuptime=`uptime | cut -d"," -f1`
-        vmypublicip=`curl ifconfig.me`
-
-        echo
-        echo "Serial Number:                    $appkey"
-        echo "Device-Id:                        $pubkey"
-        echo "Appliance Model:          $crmodel"
-        echo "Firmware Version:         $crversion"
-        echo "Firmware Build:                   $fwbuild"
-        echo "Firmware Loader version:  $crloaderversion"
-        echo "HW version:                       $hwversion"
-        echo "Config DB version:                $confdb"
-        echo "Signature DB version:             $sigdb"
-        echo "Report DB version:                $reportdb"
-        echo "Webcat Signature version: $wcversion"
-        echo "Web Proxy version:                $awhttpversion"
-        echo "SMTP Proxy version:               $awsmtpversion"
-        echo "POP/IMAP Proxy version:           $warrenversion"
-        echo "Logging Daemon version:           $garnerversion"
-        /scripts/u2d/u2d_get_pattern_info.sh console
-        if [ -f /conf/soa ]; then
-                dr_version=`cat /conf/soa | cut -f 2 -d =`
-                echo "Hot Fix version:          $dr_version"
-        else
-                echo "Hot Fix version:          N.A"
-        fi
-        echo "Uptime:                           $vuptime"
-        echo "My public IP                      $vmypublicip"
+		echo "Device-Id:		$pubkey"
+		crmodel=`awk ' BEGIN { FS="_" } { print $1} ' /etc/displayversion`
+        echo "Appliance Model:	$crmodel"
+		crversion=`awk ' BEGIN { FS="_" } { print $3; } ' /etc/displayversion`
+        echo "Firmware Version:	$crversion"
+		fw_version=`cat /etc/version | cut -d"_" -f3`
+		fwbuild=`echo $fw_version | cut -d"." -f4`
+        echo "Firmware Build:		$fwbuild"
+		hwversion=`awk -F "_" '{print $2}' /etc/displayversion`
+        echo "HW version:		$hwversion"
+		confdb=`cat /conf/db/version`
+        echo "Config DB version:	$confdb"
+		sigdb=`cat /sig/newdb/version`
+        echo "Signature DB version:	$sigdb"
+		reportdb=`cat /var/newdb/version`
+        echo "Report DB version:	$reportdb"
+		awhttpversion=`awarrenhttp -v | awk ' BEGIN { FS=" " } { print $2} '`
+        echo "Web Proxy version:	$awhttpversion"
+		awsmtpversion=`awarrensmtp -v | awk ' BEGIN { FS=" " } { print $2} '`
+        echo "SMTP Proxy version:	$awsmtpversion"
+		warrenversion=`warren -v | awk ' BEGIN { FS=" " } { print $2} '`
+        echo "POP/IMAP Proxy version:	$warrenversion"
+		garnerversion=`garner -v | awk ' BEGIN { FS=" " } { print $2} '`
+        echo "Logging Daemon version:	$garnerversion"
+		vuptime=`uptime | cut -d"," -f1`
+        echo "Uptime:			$vuptime"
+		#vmypublicip=`curl ifconfig.me`
+        #echo "My public IP	$vmypublicip"
+		vhastatus=`csc custom status | grep "HA status" | cut -d" " -f2,3,4,8`
+		echo "HA Status / Node	$vhastatus"
+		vhadetails=`echo "system ha show details" | cish | grep ":"`
+		echo "$vhadetails"
         echo
         pause
 }
@@ -163,7 +147,7 @@ nine(){
 
         echo
         echo "$runspeedtest"
-    echo
+		echo
         pause
 }
 
@@ -178,7 +162,7 @@ ten(){
 
         echo
         echo "$rundiskio"
-    echo
+		echo
         pause
 }
 
@@ -190,7 +174,7 @@ eleven(){
 
         echo
         echo "$listsokets"
-    echo
+		echo
         pause
 }
 
