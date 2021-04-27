@@ -10,7 +10,7 @@ def lastreboot():
     #This function would open and query the /log/syslog.log file for reboot evidences.    
     #Regex to find the word "Busybox" 
     line_regex = re.compile(r"\b(syslogd started: BusyBox)\b")
-    with open("/log/syslog.log", "r", encoding="utf-8", errors="ignore") as in_file:
+    with open("syslog.log", "r", encoding="utf-8", errors="ignore") as in_file:
         # Loop over each log line
         loopstart = datetime.datetime.now()
         vlinetotal = 0
@@ -20,8 +20,9 @@ def lastreboot():
             if (line_regex.search(line)):
                 print (line.rstrip("\n"))
         loopend = datetime.datetime.now()
+        print ('\n')
         print ('Took {} seconds to run'.format(loopend - loopstart))
-        print ("total number of lines read : {}".format(vlinetotal))
+        print ('total number of lines read : {}'.format(vlinetotal))
     pass
 
 def showsysteminfo():
@@ -29,7 +30,9 @@ def showsysteminfo():
     with open("/etc/cccversion", "r") as version_file:
         for line in version_file:
             s = line.rstrip("\n")
-            print ("Version : {}".format(s))
+            l = s.split()
+            print ('Version : {}'.format(l(1)))
+            print ('\n')
     pass
 
 
